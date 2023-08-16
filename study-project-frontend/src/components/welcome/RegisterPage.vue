@@ -153,7 +153,7 @@ const register = ()=>{
 }
 
 const validateEmail = ()=>{
-  post('/api/auth/valid-email',{
+  post('/api/auth/valid-register-email',{
     email: form.email
   },(message) => {
     const successMessage = message||"已发送验证邮件，请查收"
