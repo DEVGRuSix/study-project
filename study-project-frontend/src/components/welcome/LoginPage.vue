@@ -41,9 +41,10 @@
   import {User, Lock} from '@element-plus/icons-vue'
   import {reactive} from "vue";
   import {ElMessage} from "element-plus";
-  import {post} from "@/net";
+  import {get, post} from "@/net";
   import router from "@/router";
-
+  import {useStore} from "@/stores";
+  const store = useStore()
   const form =reactive({
     username: '',
     password: '',
@@ -61,7 +62,13 @@
       }, (message) => {
         const successMessage = message || "登录成功";
         ElMessage.success(successMessage)
-        router.push('/index')
+        get('/api/user/me',(message) => {
+          store.auth.user = message
+          router.push('/index')
+        },() => {
+          store.auth.user = null
+        })
+
       })
     }
   }
