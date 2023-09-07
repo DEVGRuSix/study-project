@@ -153,13 +153,16 @@ const register = ()=>{
 }
 
 const validateEmail = ()=>{
+  coldTime.value=60
   post('/api/auth/valid-register-email',{
     email: form.email
   },(message) => {
     const successMessage = message||"已发送验证邮件，请查收"
     ElMessage.success(successMessage)
-    coldTime.value=60
     setInterval(()=>coldTime.value--,1000)
+  },(message) =>{
+    ElMessage.warning(message)
+    coldTime.value = 0
   })
 }
 </script>
