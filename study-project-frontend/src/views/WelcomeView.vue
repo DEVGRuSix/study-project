@@ -8,14 +8,23 @@
       <div style="font-size: 30px;font-weight: bold">欢迎来到南孔文化生态系统</div>
       <div style="margin-top: 10px">在这里你可以了解有关南孔文化的一切知识</div>
       <div style="margin-top: 5px">测试使用测试测试</div>
-
     </div>
-    <div style="width: 400px;background-color: white">
-      <transition name="el-fade-in-linear">
-        <router-view/>
-      </transition>
+<!--    <div style="width: 400px;background-color: white">-->
+<!--      <transition name="el-fade-in-linear">-->
+<!--        <router-view/>-->
+<!--      </transition>-->
+<!--    </div>-->
+<!--  </div>-->
+    <div style="width: 400px;background-color: white;z-index: 1">
+      <router-view v-slot="{ Component }">
+        <transition name="el-fade-in-linear" mode="out-in">
+          <component :is="Component" style="height: 100%"/>
+        </transition>
+      </router-view>
     </div>
   </div>
+
+
 </template>
 
 <script setup>

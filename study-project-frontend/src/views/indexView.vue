@@ -12,6 +12,7 @@ import {ElMessage} from "element-plus";
 import router from "@/router";
 import {get} from "@/net";
 import {useStore} from "@/stores";
+
 const store = useStore()
 const logout = () => {
   get('/api/auth/logout',(message) => {
