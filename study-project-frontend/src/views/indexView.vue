@@ -14,14 +14,7 @@ import {get} from "@/net";
 import {useStore} from "@/stores";
 
 const store = useStore()
-// const logout = () => {
-//   get('/api/auth/logout',(message) => {
-//     const successMessage = message || "退出成功";
-//     ElMessage.success(successMessage)
-//     store.auth.user = null
-//     router.push('/')
-//   })
-// }
+
 const logout = () => {
   get('/api/auth/logout', (message) => {
     ElMessage.success(message)
